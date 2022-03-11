@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Todo list</title>
+    {% import "bootstrap/wtf.html" as wtf %}
+</head>
+<body>
+    {% for item in tasks %}
+    <input type="checkbox"><label> {{ item.title() }} </label>
+    <br>
+    {% endfor %}
+    <br>
+    <h2>Type your list!</h2>
+    <form method="POST" action="/">
+        {{ form.todo_text(rows='20',cols='100') }}
+        <br>
+        <button type="submit">Go</button>
+    </form>
+    <a href="{{url_for('clear_todo_list')}}"><button>Clear</button></a>
+</body>
+</html>
